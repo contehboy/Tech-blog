@@ -35,7 +35,16 @@ router.get("/post/:id", async (req, res) => {
 
     console.log(`\n ${bp.id} \n`);
 
-    res.render("post", { bp, isLoggedIn: req.session.logged_in });
+    let isLoggedInUserPost = false;
+    if (req.session.logged_in && req.session.user_id === bp.user.id) {
+      isLoggedInUserPost = true;
+    }
+
+    res.render("post", {
+      bp,
+      isLoggedIn: req.session.logged_in,
+      isLoggedInUserPost,
+    });
   } catch (err) {
     res.status(500).json(err);
   }
