@@ -13,7 +13,6 @@ router.get("/", async (req, res) => {
     // need to map over it because this is an array of objects
     const bp = bpData.map((post) => post.get({ plain: true }));
 
-    console.log(req.session);
     // pass serialized data into template
     // render 'home' view and pass bp data into it
     res.render("home", { bp, isLoggedIn: req.session.logged_in });

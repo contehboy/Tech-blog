@@ -59,10 +59,12 @@ router.post("/registerUser", async (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  console.log(`\n Logged in: ${req.session.logged_in}  \n`);
-
   if (req.session.logged_in) {
-    res.render("login");
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 
