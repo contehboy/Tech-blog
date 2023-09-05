@@ -1,0 +1,23 @@
+<section id="singlePost">
+    <div class="jumbotron">
+        <h1 class="display-4">{{bp.title}}</h1>
+        <p><span id="authorName">Author:</span> {{bp.user.username}} </p>
+        <p><span data-postID="{{bp.id}}" id="datePosted">Created On:</span> {{bp.date}}</p>
+
+        <p class="lead">{{bp.content}}</p>
+        <hr class="my-4">
+        <div id="comments">
+            {{#each bp.comments as |comment|}}
+            <p> {{comment.content}} </p>
+            {{/each}}
+        </div>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="/editPost/{{bp.id}}" role="button">Edit Post</a>
+            <a class="btn btn-primary btn-lg" role="button" id="deletePost">Delete Post</a>
+            <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Add Comment</a> -->
+        </p>
+    </div>
+</section>
+
+<script src="/js/post.js"></script>
+

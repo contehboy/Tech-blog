@@ -1,0 +1,15 @@
+<section id="blogposts">
+    {{#each bp as |bp|}}
+    <div class="postItem col-md-12">
+        <a href='/post/{{bp.id}}'>
+            <div class="card">
+            <div class="card-body">
+                <h1>{{bp.title}}</h1>
+                <h6 class="card-subtitle text-muted">Author: {{bp.user.username}}</h6>
+                <p class="card-text">{{this.content}}</p>   <!-- can also use 'this' instead of bp -->
+            </div>
+            </div>
+        </a>
+    </div>
+    {{/each}}
+</section>
